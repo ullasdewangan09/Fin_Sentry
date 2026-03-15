@@ -1,0 +1,77 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\dewan\\Programming Projects\\INNOVAT3\\web3\\contracts\\AuditBadgeRegistry.sol": {
+      "lastModificationDate": 1773507321704,
+      "contentHash": "370921b7879b73f990feeac4d2eb24a6",
+      "sourceName": "contracts/AuditBadgeRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "AuditBadgeRegistry"
+      ]
+    },
+    "C:\\Users\\dewan\\Programming Projects\\INNOVAT3\\web3\\contracts\\AuditEventRegistry.sol": {
+      "lastModificationDate": 1773504956555,
+      "contentHash": "04415017e2824c98adea528d2003be6c",
+      "sourceName": "contracts/AuditEventRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "AuditEventRegistry"
+      ]
+    }
+  }
+}

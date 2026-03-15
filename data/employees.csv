@@ -1,0 +1,19 @@
+employee_id,name,department,job_title,hire_date
+user_07,Priya Sharma,Procurement,Procurement Officer,2023-03-15
+user_11,Arjun Mehta,Procurement,Senior Buyer,2021-06-01
+user_20,Neha Gupta,Finance,Finance Analyst,2022-09-01
+user_23,Rahul Verma,Procurement,Procurement Manager,2020-01-15
+user_33,Karan Singh,Procurement,Procurement Officer,2024-01-10
+user_45,Anjali Patel,Supply Chain,Supply Chain Lead,2022-04-20
+user_50,Vikram Nair,IT,IT Procurement Specialist,2023-07-01
+user_52,Deepak Joshi,Operations,Operations Manager,2019-11-30
+user_55,Sunita Rao,Finance,Finance Controller,2018-08-15
+user_57,Amit Khanna,IT,IT Manager,2022-02-01
+user_60,Meera Iyer,Finance,Finance Analyst,2021-10-05
+user_61,Rohan Das,Logistics,Logistics Coordinator,2023-05-12
+user_62,Pooja Reddy,Operations,Operations Analyst,2024-03-01
+user_63,Sanjay Kumar,Finance,Senior Finance Analyst,2020-06-15
+user_70,Divya Sen,Audit,Internal Auditor,2021-04-01
+user_75,Nikhil Bose,Audit,Audit Manager,2019-03-25
+user_88,Kavita Agarwal,Finance,Finance Director,2015-07-01
+user_99,Rajesh Chopra,Finance,Chief Financial Officer,2012-01-05

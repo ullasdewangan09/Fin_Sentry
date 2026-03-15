@@ -1,0 +1,16 @@
+{
+  "name": "audit-web3-local",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "node": "hardhat node --hostname 127.0.0.1 --port 8545",
+    "compile": "hardhat compile",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "dotenv": "^16.6.1",
+    "ethers": "^6.15.0",
+    "hardhat": "^2.27.0"
+  }
+}

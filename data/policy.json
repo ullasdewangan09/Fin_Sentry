@@ -1,0 +1,79 @@
+{
+  "invoice_approval_threshold": 12600000.0,
+  "large_payment_threshold": 42000000.0,
+  "senior_approvers": [
+    "user_88",
+    "user_99"
+  ],
+  "invoice_splitting_window_days": 3,
+  "invoice_splitting_min_count": 2,
+  "rapid_payment_max_days": 7,
+  "dormancy_threshold_days": 180,
+  "amount_mismatch_tolerance": 0.0,
+  "controls": [
+    {
+      "control_id": "CTRL-SOD-001",
+      "name": "Separation of Duties",
+      "governance_area": "Access Governance",
+      "objective": "Ensure the employee onboarding a vendor cannot approve invoices for that vendor.",
+      "severity": "critical",
+      "linked_risk_types": ["segregation_of_duties"]
+    },
+    {
+      "control_id": "CTRL-THR-002",
+      "name": "Invoice Threshold Enforcement",
+      "governance_area": "Approval Governance",
+      "objective": "Prevent invoice splitting from bypassing approval thresholds.",
+      "severity": "high",
+      "linked_risk_types": ["invoice_splitting"]
+    },
+    {
+      "control_id": "CTRL-CYC-003",
+      "name": "Rapid Vendor-to-Payment Review",
+      "governance_area": "Vendor Governance",
+      "objective": "Ensure newly created vendors cannot be paid before a minimum vetting period.",
+      "severity": "high",
+      "linked_risk_types": ["rapid_vendor_to_payment"]
+    },
+    {
+      "control_id": "CTRL-APP-004",
+      "name": "Senior Approver Requirement",
+      "governance_area": "Approval Governance",
+      "objective": "Require senior approvers for high-value transactions.",
+      "severity": "high",
+      "linked_risk_types": ["large_payment_no_senior_approver"]
+    },
+    {
+      "control_id": "CTRL-APP-005",
+      "name": "Approval Presence Check",
+      "governance_area": "Approval Governance",
+      "objective": "Ensure every paid invoice has an explicit approval decision.",
+      "severity": "critical",
+      "linked_risk_types": ["missing_approval"]
+    },
+    {
+      "control_id": "CTRL-DUP-006",
+      "name": "Duplicate Invoice Screening",
+      "governance_area": "Invoice Governance",
+      "objective": "Prevent duplicate invoices of identical amount and timing from being processed.",
+      "severity": "medium",
+      "linked_risk_types": ["duplicate_invoice"]
+    },
+    {
+      "control_id": "CTRL-PAY-007",
+      "name": "Invoice-Transaction Amount Match",
+      "governance_area": "Payment Integrity",
+      "objective": "Ensure approved invoice values match executed payment amounts.",
+      "severity": "medium",
+      "linked_risk_types": ["amount_mismatch"]
+    },
+    {
+      "control_id": "CTRL-VEN-008",
+      "name": "Dormant Vendor Reactivation Review",
+      "governance_area": "Vendor Governance",
+      "objective": "Require legitimacy review before paying long-dormant vendors.",
+      "severity": "low",
+      "linked_risk_types": ["dormant_vendor_reactivation"]
+    }
+  ]
+}

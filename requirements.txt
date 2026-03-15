@@ -1,0 +1,20 @@
+fastapi
+uvicorn[standard]
+pandas
+networkx
+openai>=1.0.0
+python-dotenv
+pydantic
+langgraph>=1.1.0
+langchain-core>=0.3.0
+langchain-groq>=1.1.0
+matplotlib
+# Auth and rate-limiting (added v0.2.0)
+python-jose[cryptography]
+python-multipart
+slowapi
+# Optional but recommended for real on-chain submissions
+web3
+# Testing
+pytest
+httpx
