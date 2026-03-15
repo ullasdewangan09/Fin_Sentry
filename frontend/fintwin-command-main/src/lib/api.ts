@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL as string | undefined;
+// Support both VITE_API_BASE_URL and VITE_API_URL (used in render.yaml) for flexibility.
+const configuredBaseUrl =
+  (import.meta.env.VITE_API_BASE_URL as string | undefined) ||
+  (import.meta.env.VITE_API_URL as string | undefined);
 export const API_BASE_URL = (configuredBaseUrl || 'http://localhost:8000').replace(/\/+$/, '');
 
 const api = axios.create({

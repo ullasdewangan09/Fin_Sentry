@@ -103,17 +103,30 @@ if _RATE_LIMIT_AVAILABLE and _limiter is not None:
     app.state.limiter = _limiter
     app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# Allow the Vite dev server and any local origin to reach the API
+# Allow the Vite dev server, local origins, and production frontend to reach the API.
+# Override or extend via CORS_ALLOWED_ORIGINS env var (comma-separated URLs).
+_DEFAULT_ORIGINS = [
+    # Dev
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+    # Production
+    "https://finsentry.xyz",
+    "https://www.finsentry.xyz",
+    "https://app.finsentry.xyz",
+    "https://api.finsentry.xyz",
+]
+_extra_origins = [
+    o.strip() for o in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",") if o.strip()
+]
+_ALLOWED_ORIGINS = _DEFAULT_ORIGINS + _extra_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:8080",
-        "http://127.0.0.1:8080",
-    ],
+    allow_origins=_ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

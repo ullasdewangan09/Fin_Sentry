@@ -12,7 +12,7 @@ REQUIRED_COLUMNS = {
     "transactions": ["transaction_id", "invoice_id", "amount", "date"],
 }
 
-DATA_DIR = Path("data")
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
 
 def _clean_dataset(name: str, df: pd.DataFrame, required_cols: list) -> tuple:
