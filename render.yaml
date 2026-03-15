@@ -9,8 +9,9 @@ services:
       pip install -r requirements.txt
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
     domains:
-      - finsentry.xyz
-      - api.finsentry.xyz
+      - finsentry.com
+      - www.finsentry.com
+      - api.finsentry.com
     envVars:
       - key: PYTHON_VERSION
         value: "3.10"
@@ -26,7 +27,7 @@ services:
         value: production
       # Allow cross-origin requests from the production frontend
       - key: CORS_ALLOWED_ORIGINS
-        value: "https://app.finsentry.xyz,https://finsentry.xyz,https://www.finsentry.xyz"
+        value: "https://app.finsentry.com,https://finsentry.com,https://www.finsentry.com"
     autoDeploy: true
     rootDir: "."
 
@@ -38,12 +39,13 @@ services:
       npm run build
     staticPublishPath: "./dist"
     domains:
-      - app.finsentry.xyz
+      - app.finsentry.com
+      - www.finsentry.com
     envVars:
       - key: NODE_VERSION
         value: "18"
       - key: VITE_API_URL
-        value: "https://api.finsentry.xyz"
+        value: "https://api.finsentry.com"
     autoDeploy: true
     rootDir: "frontend/fintwin-command-main"
     routes:
