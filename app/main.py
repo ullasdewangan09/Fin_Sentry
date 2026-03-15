@@ -114,10 +114,11 @@ _DEFAULT_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
     # Production
-    "https://finsentry.com",
-    "https://www.finsentry.com",
-    "https://app.finsentry.com",
-    "https://api.finsentry.com",
+    "https://finsentry.xyz",
+    "https://www.finsentry.xyz",
+    "https://app.finsentry.xyz",
+    "https://api.finsentry.xyz",
+    "https://finsentry-frontend.onrender.com",
 ]
 _extra_origins = [
     o.strip() for o in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",") if o.strip()
