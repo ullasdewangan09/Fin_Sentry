@@ -1,0 +1,102 @@
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: finsentry-api
+    env: python
+    plan: standard
+    buildCommand: >
+      pip install --upgrade pip &&
+      pip install -r requirements.txt &&
+      cd web3 &&
+      npm install &&
+      cd ..
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    domains:
+      - finsentry.xyz
+      - api.finsentry.xyz
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.10"
+      - key: PORT
+        value: "8000"
+      - key: JWT_SECRET_KEY
+        fromSecret: JWT_SECRET_KEY
+      - key: GROQ_API_KEY
+        fromSecret: GROQ_API_KEY
+      - key: OPENAI_API_KEY
+        fromSecret: OPENAI_API_KEY
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: ENV
+        value: production
+    autoDeploy: true
+    rootDir: "."
+    nginx:
+      routes:
+        - path: /docs
+          rewrite: /docs
+        - path: /redoc
+          rewrite: /redoc
+        - path: /openapi.json
+          rewrite: /openapi.json
+        - path: /api/*
+          rewrite: /$1
+
+  # Web3 Service (Node.js)
+  - type: web
+    name: finsentry-web3
+    env: node
+    plan: standard
+    buildCommand: >
+      cd web3 &&
+      npm install &&
+      cd ..
+    startCommand: "cd web3 && node scripts/deploy.js"
+    domains:
+      - web3.finsentry.xyz
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
+      - key: HARDHAT_NETWORK
+        value: localhost
+      - key: PORT
+        value: "3000"
+    autoDeploy: true
+    rootDir: "web3"
+
+  # Frontend Service (React)
+  - type: web
+    name: finsentry-frontend
+    env: node
+    plan: standard
+    buildCommand: >
+      cd frontend/fintwin-command-main &&
+      npm install &&
+      npm run build
+    startCommand: "npm run preview"
+    domains:
+      - app.finsentry.xyz
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
+      - key: VITE_API_URL
+        value: "https://api.finsentry.xyz"
+      - key: PORT
+        value: "5173"
+    autoDeploy: true
+    rootDir: "frontend/fintwin-command-main"
+    staticPublicPath: "dist"
+
+databases:
+  # Optional: Add PostgreSQL for persistent data
+  - name: finsentry-db
+    databaseName: finsentry_prod
+    user: finsentry_user
+    plan: standard
+    version: "14"
+    region: us-east
+
+# Environment-specific secrets to create in Render dashboard:
+# JWT_SECRET_KEY - Generate with: openssl rand -base64 32
+# GROQ_API_KEY - From https://console.groq.com
+# OPENAI_API_KEY - From https://platform.openai.com/api-keys
